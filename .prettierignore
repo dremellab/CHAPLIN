@@ -1,8 +1,9 @@
 # gitignore
 .nextflow*
-work/
-data/
-results/
+workflow/
+config/
 .DS_Store
 *.code-workspace
 assets/*.html
+resources/*txt
+.vscode/

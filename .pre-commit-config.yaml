@@ -4,7 +4,9 @@ exclude: |
   (?x)(
       ^assets/|
       ^docs/.*.html|
-      ^_extensions/
+      ^_extensions/|
+      ^workflow/scripts/|
+      ^resources/
    )
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -19,7 +21,7 @@ repos:
     rev: v2.2.4
     hooks:
       - id: codespell
-        # https://github.com/codespell-project/codespell/issues/1498
+        args: [--ignore-words=.codespell-ignore]
   # Python formatting
   - repo: https://github.com/psf/black
     rev: 23.7.0
@@ -46,3 +48,12 @@ repos:
     rev: 054bda51dbe278b3e86f27c890e3f3ac877d616c
     hooks:
       - id: validate-cff
+  # codespell on Python comments only
+  # - repo: local
+  #   hooks:
+  #     - id: codespell-python-comments-only
+  #       name: codespell (Python comments only)
+  #       entry: .hooks/codespell_python_comments_only.sh
+  #       language: system
+  #       files: \.py$
+  #       types: [file]
