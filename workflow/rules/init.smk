@@ -25,6 +25,7 @@ def check_readaccess(filename):
     """Checks permissions to see if user can read a file
     :param filename <str>: Name of file to check
     """
+    print(f"Checking read access for {filename}", flush=True)
     filename = filename.strip()
     check_existence(filename)
     if not os.access(filename, os.R_OK):
@@ -211,7 +212,7 @@ SAMPLESDF["PEorSE"] = "PE"
 for sample in SAMPLES:
     R1file = SAMPLESDF["path_to_R1_fastq"][sample]
     R2file = SAMPLESDF["path_to_R2_fastq"][sample]
-    # print(sample,R1file,R2file)
+    print(sample,R1file,R2file)
     check_readaccess(R1file)
     R1filenewname = join(WORKDIR, "fastqs", sample + ".R1.fastq.gz")
     if not os.path.exists(R1filenewname):
